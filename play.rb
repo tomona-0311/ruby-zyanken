@@ -24,17 +24,18 @@ if play_number == 0 || play_number ==1 || play_number = 2
    # あいこの場合 ((ループ))
    if play_number == random_hander
        puts "あいこ!!!"
-       # return true
+       return true
        
  　 #勝った時 
- 　    elsif (play_number ==  0   &&   random_hander == 1 ) || (play_number == 1 && random_hander == 2)  || (play_nember == 2 && random_hander== 0)
+ 　    elsif (play_number ==  0   &&   random_hander == 1 ) || (play_number == 1 && random_hander == 2)  || (play_number == 2 && random_hander== 0)
        $result_janken = "win"
         return false
     
     #負けた時
-        elsif (play_number == 1 && random_hander== 0 ) || (play_number == 2 && random_hander== 1 )  || (play_nember == 0 && random_hander== 2)
+        elsif (play_number == 1 && random_hander== 0 ) || (play_number == 2 && random_hander== 1 )  || (play_number == 0 && random_hander== 2)
         $result_janken = "lose"
         return false
+        exit
     end
 
 elsif    play_number == 3
