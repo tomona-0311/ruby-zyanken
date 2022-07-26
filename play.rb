@@ -26,16 +26,18 @@ if play_number == 0 || play_number == 1 || play_number == 2
    if play_number == random_hander
      puts "あいこ!!!"
      return true
+     
  　   #勝った時
  　   elsif (play_number ==  0   &&   random_hander == 1 ) || (play_number == 1 && random_hander == 2 )  || (play_number == 2 && random_hander == 0)
-     $result_janken = "win"
-        return false
+     $result_jankenA= "win"
+        return last_game
+      
      #負けた時
      elsif (play_number == 1 && random_hander== 0 ) || (play_number == 2 && random_hander== 1 )  || (play_number == 0 && random_hander == 2)
-        $result_janken = "lose"
-        return false
+        $result_jankenB = "lose"
+        return last_game
         
-        exit
+        
     end
 elsif play_number == 3
     puts "戦わない"
@@ -43,6 +45,13 @@ elsif play_number == 3
 end
 end
    #ここまでがジャンケンの実装
+   
+   
+   
+   
+   
+   
+   
    
    #あっち向いてホイ
  def last_game
@@ -56,56 +65,40 @@ end
   puts "----------------"
   
    puts "あなた：#{directions[my_direction]}"
-   puts "相手：#{directions[my_direction]}"
+   puts "相手：#{directions[second_randam]}"
 
   #勝つ時
-  if $result_janken == "win" && my_direction == second_randam
+  if ($result_jankenA && my_direction == second_randam) 
     puts "Victory！！"
-    return false
-
+  exit
    #負けの時
-   elsif $result_janken == "lose" && my_direction == second_randam
+   elsif ($result_jankenB && second_randam == my_direction) 
     puts "lose....."
-    return false
     
+    exit
     #あいこの時
-else
-    puts "ジャンケンから始める"
-    return janken
-    end 
+else # (second_randam != my_direction) || ($result_jankenA && my_direction != second_randam) ||  ($result_jankenB && second_randam != my_direction) 
+  puts "もう一度ジャンケン"
+  return janken
+  end 
 end  
 #ここまでがあっち向いてホイの範囲
 
 
 #ゲームを連結させて、ループに回す方法
 def game
-  if janken == true #jankenが（true）成立するなら
+  if  janken == true #last_gameが（true）成立するなら
     return true
-    
-  elsif last_game == true #last_gameが（true）成立するなら
-    return true
+   elsif last_game == true #last_gameが（true）成立するなら
+    return false
     
   else
     return false
-  
+   puts "misu"
   end
 
 end
 next_game = true
 while next_game do
     next_game = game
-    
-end
-
-
-
-
-#if janken =="win" && last_game == 
-    
-  #  if play_nember == random_nember
-    #    puts "あいこです。もう一度ジャンケンをします"
-      #  return true
-       # elsif play_namber == 3 ||rondom_number == 3
-        #    puts "ジャンケンが放棄されました.ゲームは終了です"
-        #    return false
-        #    elsif  play_number - rondom_number ==3
+  end
