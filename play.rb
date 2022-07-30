@@ -1,4 +1,3 @@
-
 def janken
 
 random_hander = rand(3)
@@ -6,6 +5,8 @@ jankens = ["グー","チョキ","パー","戦わない"]
 puts "ジャンケン"
 puts "0(グー)1(チョキ)2(パー)3(戦わない)"
 play_number = gets.to_i
+
+
 #ループ
 while play_number >= 4
     puts "------------------------------------------"
@@ -28,13 +29,13 @@ if play_number == 0 || play_number == 1 || play_number == 2
      return true
      
  　   #勝った時
- 　   elsif (play_number ==  0   &&   random_hander == 1 ) || (play_number == 1 && random_hander == 2 )  || (play_number == 2 && random_hander == 0)
-     $result_jankenA= "win"
+ 　   elsif (play_number ==0  && random_hander == 1 ) || (play_number == 1 && random_hander == 2 )  || (play_number == 2 && random_hander == 0)
+     $result_janken = "win"
         return last_game
       
      #負けた時
      elsif (play_number == 1 && random_hander== 0 ) || (play_number == 2 && random_hander== 1 )  || (play_number == 0 && random_hander == 2)
-        $result_jankenB = "lose"
+        $result_janken = "lose"
         return last_game
         
         
@@ -58,6 +59,7 @@ end
   second_randam = rand(3)
   directions = ["上","下","右","左"]
   
+ 
   puts "あっち向いて〜"
   puts "0(上),1(下),2(右),3(左)"
   my_direction = gets.to_i
@@ -68,11 +70,11 @@ end
    puts "相手：#{directions[second_randam]}"
 
   #勝つ時
-  if ($result_jankenA && my_direction == second_randam) 
+  if ($result_janken == "win" && my_direction == second_randam) 
     puts "Victory！！"
   exit
    #負けの時
-   elsif ($result_jankenB && second_randam == my_direction) 
+   elsif ($result_janken == "lose" && second_randam == my_direction) 
     puts "lose....."
     
     exit
@@ -87,11 +89,11 @@ end
 
 #ゲームを連結させて、ループに回す方法
 def game
-  if  janken == true #last_gameが（true）成立するなら
+  if janken == true #last_gameが（true）成立するなら
     return true
+    
    elsif last_game == true #last_gameが（true）成立するなら
     return false
-    
   else
     return false
    puts "misu"
